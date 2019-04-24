@@ -1,17 +1,16 @@
 import discord
 from discord.ext import commands
 
-client = discord.Client()
 bot = commands.Bot(command_prefix='$')
 
-@client.event
+@bot.event
 async def on_ready():
 	print("The bot is ready!")
-	await client.change_presence(activity=discord.Game(name="Being Tilted"))
+	await bot.change_presence(activity=discord.Game(name="Being Tilted"))
 
-@client.event
+@bot.event
 async def on_message(message):
-	if message.author == client.user:
+	if message.author == bot.user:
 		return
 
 	if message.content == "Hello":
@@ -21,4 +20,4 @@ async def on_message(message):
 async def say(ctx, arg):
 	await ctx.send(arg)
 
-client.run('TOKEN')
+bot.run('Token')
